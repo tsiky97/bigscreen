@@ -2,8 +2,6 @@
 
 	@section('content')
 
-		@include('answer.partials.flash')
-
 		<div class="row">
 
 		    <div class="col align-self-center container_sondage">

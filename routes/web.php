@@ -14,3 +14,6 @@
 Route::get('/', 'SurveyController@index');
 Route::resource("answer", "AnswerController");
 Route::get('/answer/user/{userId}', 'AnswerController@show')->name('answer.show');;
+
+Auth::routes();
+Route::resource('administration', 'BackupController')->middleware('auth');
