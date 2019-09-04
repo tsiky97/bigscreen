@@ -6,9 +6,9 @@
     	<a class="nav-link active" href="{{route('administration.index')}}">Accueil</a>
   	</li>
   	<li class="nav-item">
-    	<a class="nav-link" href="#">Questionnaire</a>
+    	<a class="nav-link" href="{{route('administration.questions')}}">Questionnaire</a>
   	</li>
   	<li class="nav-item">
-    	<a class="nav-link" href="#">Réponses</a>
+    	<a class="nav-link" href="{{route('administration.answers')}}">Réponses</a>
   	</li>
 </ul>

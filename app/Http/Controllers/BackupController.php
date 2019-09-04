@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Answer;
+use App\Question;
 
 class BackupController extends Controller
 {
@@ -11,9 +13,23 @@ class BackupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
+
         return view('back.index');
+    }
+
+    public function showQuestions() {
+
+        $questions = Question::all();
+
+        return view('back.questions', ['questions' => $questions]);
+    }
+
+    public function showAnswers() {
+
+        $groupsAnswers = Answer::with('question')->get()->groupBy('userId');
+
+        return view('back.answers', ['groupsAnswers' => $groupsAnswers]);
     }
 
     /**
