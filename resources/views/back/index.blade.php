@@ -8,13 +8,18 @@
 		  		<h1>Statistiques</h1>
 		  		<div class="row">
 				    <div class="col">
-				    	Question 6
-		  				<canvas id="myChart6"></canvas>
+				    	{!! $chartjs6->render() !!}
 		  			</div>
-				    <div class="col">Column</div>
+				    <div class="col">
+				    	{!! $chartjs7->render() !!}
+		  			</div>
 				    <div class="w-100"></div>
-				    <div class="col">Column</div>
-				    <div class="col">Column</div>
+				    <div class="col">
+				    	{!! $chartjs8->render() !!}
+				    </div>
+				    <div class="col">
+				    	{!! $chartjs115->render() !!}
+				    </div>
 				</div>
 		  	</div>
 		</div>

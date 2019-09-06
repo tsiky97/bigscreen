@@ -25,6 +25,7 @@
 						    </tr>
 						</tbody>
 						@endforeach
+						<hr>
 		  		@endforeach
 
 		  	</div>
