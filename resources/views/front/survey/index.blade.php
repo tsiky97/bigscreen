@@ -6,7 +6,9 @@
 
 		    <div class="col align-self-center container_sondage">
 		    	<img src="{{asset('images/bigscreen_logo.png')}}" class="logo" alt="Bigscreen" />
-		      	<p><b>Merci de répondre à toutes les questions et de valider le formulaire en bas de page.</b></p>
+		      	<p>
+		      		<b>Merci de répondre à toutes les questions et de valider le formulaire en bas de page.</b>
+		      	</p>
 		      	<form method="post" action="{{route('answer.store')}}">
 		      		{{ csrf_field() }}
 		      		@foreach($questions as $question)

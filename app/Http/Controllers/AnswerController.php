@@ -31,14 +31,18 @@ class AnswerController extends Controller
 	      	$answerArray[] = $newAnswer;
 	    };
 
-    	return "Toute l’équipe de Bigscreen vous remercie pour votre engagement. Grâce à votre investissement, nous vous préparons une application toujours plus facile à utiliser, seul ou en famille. Si vous désirez consulter vos réponse ultérieurement, vous pouvez consultez cette adresse: <a href='http://localhost:8000/answer/user/".$randomText."'>http://localhost:8000/answer/user/".$randomText."</a>";
+    	// return "Toute l’équipe de Bigscreen vous remercie pour votre engagement. Grâce à votre investissement, nous vous préparons une application toujours plus facile à utiliser, seul ou en famille. Si vous désirez consulter vos réponse ultérieurement, vous pouvez consultez cette adresse: <a href='http://localhost:8000/answer/user/".$randomText."'>http://localhost:8000/answer/user/".$randomText."</a>";
+
+    	// return redirect()->route('front.answer.index', ['randomText' => $randomText]);
+    	return redirect()->route('front.answer.index')->with( [ 'randomText' => $randomText ] );
+
 	}
 
 	public function index(Survey $survey) {
 
 		$survey->load('questions.answers');
 
-	    return view('answer.index', compact('survey'));
+	    return view('front.answer.index', compact('survey'));
 
   	}
 
@@ -50,7 +54,7 @@ class AnswerController extends Controller
   		$answers = Answer::with('question')->where('userId', $userId)->get();
   		$answersCount = Answer::with('question')->where('userId', $userId)->count();
 
-  		return view('answer.show', ['answers' => $answers]);
+  		return view('front.answer.show', ['answers' => $answers]);
 
   	}
 
