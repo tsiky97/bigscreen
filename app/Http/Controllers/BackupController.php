@@ -33,6 +33,27 @@ class BackupController extends Controller
             $tabCount6[$i] = Answer::where('answer', $valueQuestion6[$i])->count();
         }
 
+        $chartjs6 = app()->chartjs
+                    ->name('Question6')
+                    ->type('pie')
+                    ->size(['width' => 200, 'height' => 200])
+                    ->labels(['Occulus Rift/s', 'HTC Vive', 'Windows Mixed Reality', 'PSVR'])
+                    ->datasets([
+                        [
+                            'backgroundColor' => ['#BAC1ED', '#FFD19A', '#FFA785', '#F9C0F3'],
+                            'hoverBackgroundColor' => ['#BAC1ED', '#FFD19A', '#FFA785', '#F9C0F3'],
+                            'data' => [$tabCount6[0], $tabCount6[1], $tabCount6[2], $tabCount6[3]]
+                        ]
+                    ])
+                    ->options([
+                        'title' => [
+                            'display' => true,
+                            'text' => 'Question 6'
+                        ],
+                    ]);
+
+        /////////////////////////////////////////////////////////////////////////////
+
         $valueQuestion7 = Choice::where('question_id', '7')->pluck('choice');
         $numberValue7 = Choice::where('question_id', '7')->count();
         $tabCount7 = [];
@@ -41,6 +62,27 @@ class BackupController extends Controller
             $tabCount7[$i] = Answer::where('answer', $valueQuestion7[$i])->count();
         }
 
+        $chartjs7 = app()->chartjs
+                    ->name('Question7')
+                    ->type('pie')
+                    ->size(['width' => 200, 'height' => 200])
+                    ->labels(['SteamVR', 'Occulus store', 'Viveport', 'Playstation VR', 'Google Play', 'Windows store'])
+                    ->datasets([
+                        [
+                            'backgroundColor' => ['#FFCC63', '#6DD9BF', '#50A18E', '#F2D680', '#F2916D', '#F26E50'],
+                            'hoverBackgroundColor' => ['#FFCC63', '#6DD9BF', '#50A18E', '#F2D680', '#F2916D', '#F26E50'],
+                            'data' => [$tabCount7[0], $tabCount7[1], $tabCount7[2], $tabCount7[3], $tabCount7[4], $tabCount7[5]]
+                        ]
+                    ])
+                    ->options([
+                        'title' => [
+                            'display' => true,
+                            'text' => 'Question 7'
+                        ],
+                    ]);
+
+        ////////////////////////////////////////////////////////////////////////////
+
         $valueQuestion8 = Choice::where('question_id', '8')->pluck('choice');
         $numberValue8 = Choice::where('question_id', '8')->count();
         $tabCount8 = [];
@@ -48,6 +90,27 @@ class BackupController extends Controller
         for($i=0; $i < $numberValue8; $i++) {
             $tabCount8[$i] = Answer::where('answer', $valueQuestion8[$i])->count();
         }
+
+        $chartjs8 = app()->chartjs
+                    ->name('Question8')
+                    ->type('pie')
+                    ->size(['width' => 200, 'height' => 200])
+                    ->labels(['Occulus Quest', 'Occulus Go', 'HTC Vive Pro', 'Autre', 'Aucun'])
+                    ->datasets([
+                        [
+                            'backgroundColor' => ['#8B5A8C', '#ADB0D9', '#F2DC9B', '#F2A35E', '#F25C5C'],
+                            'hoverBackgroundColor' => ['#8B5A8C', '#ADB0D9', '#F2DC9B', '#F2A35E', '#F25C5C'],
+                            'data' => [$tabCount8[0], $tabCount8[1], $tabCount8[2], $tabCount8[3], $tabCount8[4]]
+                        ]
+                    ])
+                    ->options([
+                        'title' => [
+                            'display' => true,
+                            'text' => 'Question 8'
+                        ],
+                    ]);
+
+        //////////////////////////////////////////////////////////////////////////
 
         $tabCount11 = [];
         for($i=1; $i < 6; $i++) {
@@ -73,63 +136,6 @@ class BackupController extends Controller
         for($i=1; $i < 6; $i++) {
             $tabCount15[$i] = Answer::where('question_id', '15')->where('answer', $i)->count();
         }
-
-        $chartjs6 = app()->chartjs
-                    ->name('Question6')
-                    ->type('pie')
-                    ->size(['width' => 200, 'height' => 200])
-                    ->labels(['Occulus Rift/s', 'HTC Vive', 'Windows Mixed Reality', 'PSVR'])
-                    ->datasets([
-                        [
-                            'backgroundColor' => ['#BAC1ED', '#FFD19A', '#FFA785', '#F9C0F3'],
-                            'hoverBackgroundColor' => ['#BAC1ED', '#FFD19A', '#FFA785', '#F9C0F3'],
-                            'data' => [$tabCount6[0], $tabCount6[1], $tabCount6[2], $tabCount6[3]]
-                        ]
-                    ])
-                    ->options([
-                        'title' => [
-                            'display' => true,
-                            'text' => 'Question 6'
-                        ],
-                    ]);
-
-        $chartjs7 = app()->chartjs
-                    ->name('Question7')
-                    ->type('pie')
-                    ->size(['width' => 200, 'height' => 200])
-                    ->labels(['SteamVR', 'Occulus store', 'Viveport', 'Playstation VR', 'Google Play', 'Windows store'])
-                    ->datasets([
-                        [
-                            'backgroundColor' => ['#FFCC63', '#6DD9BF', '#50A18E', '#F2D680', '#F2916D', '#F26E50'],
-                            'hoverBackgroundColor' => ['#FFCC63', '#6DD9BF', '#50A18E', '#F2D680', '#F2916D', '#F26E50'],
-                            'data' => [$tabCount7[0], $tabCount7[1], $tabCount7[2], $tabCount7[3], $tabCount7[4], $tabCount7[5]]
-                        ]
-                    ])
-                    ->options([
-                        'title' => [
-                            'display' => true,
-                            'text' => 'Question 7'
-                        ],
-                    ]);
-
-        $chartjs8 = app()->chartjs
-                    ->name('Question8')
-                    ->type('pie')
-                    ->size(['width' => 200, 'height' => 200])
-                    ->labels(['Occulus Quest', 'Occulus Go', 'HTC Vive Pro', 'Autre', 'Aucun'])
-                    ->datasets([
-                        [
-                            'backgroundColor' => ['#8B5A8C', '#ADB0D9', '#F2DC9B', '#F2A35E', '#F25C5C'],
-                            'hoverBackgroundColor' => ['#8B5A8C', '#ADB0D9', '#F2DC9B', '#F2A35E', '#F25C5C'],
-                            'data' => [$tabCount8[0], $tabCount8[1], $tabCount8[2], $tabCount8[3], $tabCount8[4]]
-                        ]
-                    ])
-                    ->options([
-                        'title' => [
-                            'display' => true,
-                            'text' => 'Question 8'
-                        ],
-                    ]);
 
         $chartjs115 = app()->chartjs
                     ->name('Question115')
@@ -174,6 +180,8 @@ class BackupController extends Controller
                             'text' => 'Question 11 à 15'
                         ],
                     ]);
+
+        ///////////////////////////////////////////////////////////////
 
         return view('back.index', compact('chartjs6', 'chartjs7', 'chartjs8', 'chartjs115'));
 

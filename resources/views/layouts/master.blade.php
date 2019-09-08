@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
         <link href="{{asset('css/app.css')}}" rel="stylesheet">
-        <!-- <link href="{{asset('css/app-complement.css')}}" rel="stylesheet"> -->
+        <link href="{{asset('css/app-complement.css')}}" rel="stylesheet">
 
     </head>
 
