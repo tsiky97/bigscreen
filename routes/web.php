@@ -11,6 +11,7 @@
 |
 */
 
+//page d'accueil
 Route::get('/', 'SurveyController@index');
 Route::resource("answer", "AnswerController");
 Route::get('/answer/user/{userId}', 'AnswerController@show')->name('front.answer.show');

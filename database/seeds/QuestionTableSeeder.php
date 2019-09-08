@@ -9,6 +9,8 @@ class QuestionTableSeeder extends Seeder
      *
      * @return void
      */
+
+    //seeder - question du sondage 1
     public function run()
     {
     	

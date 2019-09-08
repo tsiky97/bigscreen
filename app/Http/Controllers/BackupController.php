@@ -10,6 +10,7 @@ use App\Charts\SampleChart;
 use Charts;
 use DB;
 
+//controlleur pour l'administration
 class BackupController extends Controller
 {
     /**
@@ -19,53 +20,59 @@ class BackupController extends Controller
      */
     public function index() {
 
-        $choiceOne6 = Answer::where('answer', 'Occulus Rift/s')->count();
-        $choiceTwo6 = Answer::where('answer', 'HTC Vive')->count();
-        $choiceThree6 = Answer::where('answer', 'Windows Mixed Reality')->count();
-        $choiceFour6 = Answer::where('answer', 'PSVR')->count();
+        // 1) récupérer tous les choix de la question 6 (table choices)
+        // 2) compter le nombre de chaque choix de la question 6 (table answers)
+        // dans la table answers, je veux le nombre de chaque choix de la question 6
+        // --> combien y a t il eu de choixe "occulus" de la question 6
 
-        $choiceOne7 = Answer::where('answer', 'SteamVR')->count();
-        $choiceTwo7 = Answer::where('answer', 'Occulus store')->count();
-        $choiceThree7 = Answer::where('answer', 'Viveport')->count();
-        $choiceFour7 = Answer::where('answer', 'Playstation VR')->count();
-        $choiceFive7 = Answer::where('answer', 'Google Play')->count();
-        $choiceSix7 = Answer::where('answer', 'Windows store')->count();
+        $valueQuestion6 = Choice::where('question_id', '6')->pluck('choice');
+        $numberValue6 = Choice::where('question_id', '6')->count();
+        $tabCount6 = [];
 
-        $choiceOne8 = Answer::where('answer', 'Occulus Quest')->count();
-        $choiceTwo8 = Answer::where('answer', 'Occulus Go')->count();
-        $choiceThree8 = Answer::where('answer', 'HTC Vive Pro')->count();
-        $choiceFour8 = Answer::where('answer', 'Autre')->count();
-        $choiceFive8 = Answer::where('answer', 'Aucun')->count();
+        for($i=0; $i < $numberValue6; $i++) {
+            $tabCount6[$i] = Answer::where('answer', $valueQuestion6[$i])->count();
+        }
 
-        $OneQuestion11 = Answer::where('question_id', '11')->where('answer', '1')->count();
-        $TwoQuestion11 = Answer::where('question_id', '11')->where('answer', '2')->count();
-        $ThreeQuestion11 = Answer::where('question_id', '11')->where('answer', '3')->count();
-        $FourQuestion11 = Answer::where('question_id', '11')->where('answer', '4')->count();
-        $FiveQuestion11 = Answer::where('question_id', '11')->where('answer', '5')->count();
+        $valueQuestion7 = Choice::where('question_id', '7')->pluck('choice');
+        $numberValue7 = Choice::where('question_id', '7')->count();
+        $tabCount7 = [];
 
-        $OneQuestion12 = Answer::where('question_id', '12')->where('answer', '1')->count();
-        $TwoQuestion12 = Answer::where('question_id', '12')->where('answer', '2')->count();
-        $ThreeQuestion12 = Answer::where('question_id', '12')->where('answer', '3')->count();
-        $FourQuestion12 = Answer::where('question_id', '12')->where('answer', '4')->count();
-        $FiveQuestion12 = Answer::where('question_id', '12')->where('answer', '5')->count();
+        for($i=0; $i < $numberValue7; $i++) {
+            $tabCount7[$i] = Answer::where('answer', $valueQuestion7[$i])->count();
+        }
 
-        $OneQuestion13 = Answer::where('question_id', '13')->where('answer', '1')->count();
-        $TwoQuestion13 = Answer::where('question_id', '13')->where('answer', '2')->count();
-        $ThreeQuestion13 = Answer::where('question_id', '13')->where('answer', '3')->count();
-        $FourQuestion13 = Answer::where('question_id', '13')->where('answer', '4')->count();
-        $FiveQuestion13 = Answer::where('question_id', '13')->where('answer', '5')->count();
+        $valueQuestion8 = Choice::where('question_id', '8')->pluck('choice');
+        $numberValue8 = Choice::where('question_id', '8')->count();
+        $tabCount8 = [];
 
-        $OneQuestion14 = Answer::where('question_id', '14')->where('answer', '1')->count();
-        $TwoQuestion14 = Answer::where('question_id', '14')->where('answer', '2')->count();
-        $ThreeQuestion14 = Answer::where('question_id', '14')->where('answer', '3')->count();
-        $FourQuestion14 = Answer::where('question_id', '14')->where('answer', '4')->count();
-        $FiveQuestion14 = Answer::where('question_id', '14')->where('answer', '5')->count();
+        for($i=0; $i < $numberValue8; $i++) {
+            $tabCount8[$i] = Answer::where('answer', $valueQuestion8[$i])->count();
+        }
 
-        $OneQuestion15 = Answer::where('question_id', '15')->where('answer', '1')->count();
-        $TwoQuestion15 = Answer::where('question_id', '15')->where('answer', '2')->count();
-        $ThreeQuestion15 = Answer::where('question_id', '15')->where('answer', '3')->count();
-        $FourQuestion15 = Answer::where('question_id', '15')->where('answer', '4')->count();
-        $FiveQuestion15 = Answer::where('question_id', '15')->where('answer', '5')->count();
+        $tabCount11 = [];
+        for($i=1; $i < 6; $i++) {
+            $tabCount11[$i] = Answer::where('question_id', '11')->where('answer', $i)->count();
+        }
+
+        $tabCount12 = [];
+        for($i=1; $i < 6; $i++) {
+            $tabCount12[$i] = Answer::where('question_id', '12')->where('answer', $i)->count();
+        }
+
+        $tabCount13 = [];
+        for($i=1; $i < 6; $i++) {
+            $tabCount13[$i] = Answer::where('question_id', '13')->where('answer', $i)->count();
+        }
+
+        $tabCount14 = [];
+        for($i=1; $i < 6; $i++) {
+            $tabCount14[$i] = Answer::where('question_id', '14')->where('answer', $i)->count();
+        }
+
+        $tabCount15 = [];
+        for($i=1; $i < 6; $i++) {
+            $tabCount15[$i] = Answer::where('question_id', '15')->where('answer', $i)->count();
+        }
 
         $chartjs6 = app()->chartjs
                     ->name('Question6')
@@ -76,7 +83,7 @@ class BackupController extends Controller
                         [
                             'backgroundColor' => ['#BAC1ED', '#FFD19A', '#FFA785', '#F9C0F3'],
                             'hoverBackgroundColor' => ['#BAC1ED', '#FFD19A', '#FFA785', '#F9C0F3'],
-                            'data' => [$choiceOne6, $choiceTwo6, $choiceThree6, $choiceFour6]
+                            'data' => [$tabCount6[0], $tabCount6[1], $tabCount6[2], $tabCount6[3]]
                         ]
                     ])
                     ->options([
@@ -95,7 +102,7 @@ class BackupController extends Controller
                         [
                             'backgroundColor' => ['#FFCC63', '#6DD9BF', '#50A18E', '#F2D680', '#F2916D', '#F26E50'],
                             'hoverBackgroundColor' => ['#FFCC63', '#6DD9BF', '#50A18E', '#F2D680', '#F2916D', '#F26E50'],
-                            'data' => [$choiceOne7, $choiceTwo7, $choiceThree7, $choiceFour7, $choiceFive7, $choiceSix7]
+                            'data' => [$tabCount7[0], $tabCount7[1], $tabCount7[2], $tabCount7[3], $tabCount7[4], $tabCount7[5]]
                         ]
                     ])
                     ->options([
@@ -114,7 +121,7 @@ class BackupController extends Controller
                         [
                             'backgroundColor' => ['#8B5A8C', '#ADB0D9', '#F2DC9B', '#F2A35E', '#F25C5C'],
                             'hoverBackgroundColor' => ['#8B5A8C', '#ADB0D9', '#F2DC9B', '#F2A35E', '#F25C5C'],
-                            'data' => [$choiceOne8, $choiceTwo8, $choiceThree8, $choiceFour8, $choiceFive8]
+                            'data' => [$tabCount8[0], $tabCount8[1], $tabCount8[2], $tabCount8[3], $tabCount8[4]]
                         ]
                     ])
                     ->options([
@@ -134,31 +141,31 @@ class BackupController extends Controller
                             "label" => "1",
                             'backgroundColor' => "rgb(255,108,139,0.51)",
                             'fill' => 'undefined',
-                            'data' => [$OneQuestion11, $OneQuestion12, $OneQuestion13, $OneQuestion14, $OneQuestion15],
+                            'data' => [$tabCount11[1], $tabCount12[1], $tabCount13[1], $tabCount14[1], $tabCount15[1]]
                         ],
                         [
                             "label" => "2",
                             'backgroundColor' => "rgb(255,159,64,0.51)",
                             'fill' => '-1',
-                            'data' => [$TwoQuestion11, $TwoQuestion12, $TwoQuestion13, $TwoQuestion14, $TwoQuestion15],
+                            'data' => [$tabCount11[2], $tabCount12[2], $tabCount13[2], $tabCount14[2], $tabCount15[2]]
                         ],
                         [
                             "label" => "3",
                             'backgroundColor' => "rgb(255,205,86,0.51)",
                             'fill' => '1',
-                            'data' => [$ThreeQuestion11, $ThreeQuestion12, $ThreeQuestion13, $ThreeQuestion14, $ThreeQuestion15],
+                            'data' => [$tabCount11[3], $tabCount12[3], $tabCount13[3], $tabCount14[3], $tabCount15[3]]
                         ],
                         [
                             "label" => "4",
                             'backgroundColor' => "rgb(54,162,235,0.51)",
                             'fill' => 'false',
-                            'data' => [$FourQuestion11, $FourQuestion12, $FourQuestion13, $FourQuestion14, $FourQuestion15],
+                            'data' => [$tabCount11[4], $tabCount12[4], $tabCount13[4], $tabCount14[4], $tabCount15[4]]
                         ],
                         [
                             "label" => "5",
                             'backgroundColor' => "rgba(153,102,255, 0.51)",
                             'fill' => '-1',
-                            'data' => [$FiveQuestion11, $FiveQuestion12, $FiveQuestion13, $FiveQuestion14, $FiveQuestion15],
+                            'data' => [$tabCount11[5], $tabCount12[5], $tabCount13[5], $tabCount14[5], $tabCount15[5]]
                         ],
                     ])
                     ->options([
@@ -172,6 +179,7 @@ class BackupController extends Controller
 
     }
 
+    //fonction qui permet de montrer toutes les questions
     public function showQuestions() {
 
         $questions = Question::all();
@@ -179,6 +187,7 @@ class BackupController extends Controller
         return view('back.questions', ['questions' => $questions]);
     }
 
+    //fonction qui permet d'afficher les réponses par utilisateur
     public function showAnswers() {
 
         $groupsAnswers = Answer::with('question')->get()->groupBy('userId');

@@ -9,6 +9,8 @@ class ChoiceTableSeeder extends Seeder
      *
      * @return void
      */
+
+    //seeder - tous les choix possible du sondage 1
     public function run()
     {
         App\Choice::create([
