@@ -190,7 +190,7 @@ class BackupController extends Controller
     //fonction qui permet de montrer toutes les questions
     public function showQuestions() {
 
-        $questions = Question::all();
+        $questions = Question::where('survey_id', '1')->get();
 
         return view('back.questions', ['questions' => $questions]);
     }
@@ -198,7 +198,7 @@ class BackupController extends Controller
     //fonction qui permet d'afficher les réponses par utilisateur
     public function showAnswers() {
 
-        $groupsAnswers = Answer::with('question')->get()->groupBy('userId');
+        $groupsAnswers = Answer::where('survey_id', '1')->with('question')->get()->groupBy('userId');
 
         return view('back.answers', ['groupsAnswers' => $groupsAnswers]);
     }

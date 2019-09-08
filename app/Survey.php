@@ -9,8 +9,6 @@ class Survey extends Model
 
 	public $timestamps = false;
 
-    protected $fillable = ['title'];
-
     public function questions() {
 	    return $this->hasMany(Question::class);
 	}

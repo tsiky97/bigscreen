@@ -15,18 +15,18 @@ class AnswerController extends Controller
     public function store(Request $request) {
 
 	    // remove the token
-	    $arr = $request->except('_token');
+	    $removeToken = $request->except('_token');
 
 	    $randomText = Uuid::generate()->string;
 
-	    foreach ($arr as $key => $value) {
+	    foreach ($removeToken as $key => $value) {
 
 	    	$newAnswer = new Answer();
 	      	$newValue = $value['answer'];
 		    $newAnswer->answer = $newValue;
 		    $newAnswer->question_id = $key;
 		    $newAnswer->userId = $randomText;
-		    $newAnswer->survey_id = '1';
+		    $newAnswer->survey_id = Survey::with('questions')->pluck('id')->first();
 
 	      	$newAnswer->save();
 

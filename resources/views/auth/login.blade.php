@@ -1,3 +1,5 @@
+<link href="{{asset('css/app-complement.css')}}" rel="stylesheet">
+
 @extends('layouts.app')
 
 @section('content')
