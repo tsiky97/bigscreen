@@ -144,6 +144,7 @@ return [
     */
 
     'attributes' => [
+        '1.answer'              => 'adresse email',
         'name'                  => 'nom',
         'username'              => "nom d'utilisateur",
         'email'                 => 'adresse email',

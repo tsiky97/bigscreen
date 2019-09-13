@@ -18,6 +18,7 @@ class BackupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index() {
 
         // 1) récupérer tous les choix de la question 6 (table choices)

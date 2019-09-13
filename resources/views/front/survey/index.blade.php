@@ -11,6 +11,15 @@
 		      	</p>
 		      	<form method="post" action="{{route('answer.store')}}">
 		      		{{ csrf_field() }}
+					@if ($errors->any())
+					    <div class="alert alert-danger">
+					        <ul>
+					            @foreach ($errors->all() as $error)
+					                <li>{{ $error }}</li>
+					            @endforeach
+					        </ul>
+					    </div>
+					@endif
 		      		@foreach($questions as $question)
 		      		<div class="card">
 						<div class="card-header">
@@ -19,25 +28,25 @@
 					  	<div class="card-body">
 						    <h5 class="card-title">{{$question->title}}</h5>
 						    <p class="card-text">
+
 							    @if($question->question_type == 'A')
-								    <select name="{{ $question->id }}[answer]" class="custom-select" required>
-							        	<option selected>Choisissez votre réponse</option>
+								    <select name="{{ $question->id }}[answer]" class="custom-select">
 							        	@foreach($question->choices as $choice)
-							        	<option value="{{ $choice->choice }}">{{$choice->choice}}</option>
+							        	<option value="{{ $choice->choice }}" {{ old($question->id.'.answer')==$choice->choice? "selected" : "" }}>{{$choice->choice}}</option>
 							        	@endforeach
 							        </select>
+							        
 									@elseif ($question->question_type == 'B')
-										@if($question->id == '1')
-										<input type="email" class="form-control" name="{{ $question->id }}[answer]" required>
-										@elseif($question->id == '2')
-										<input type="number" class="form-control" name="{{ $question->id }}[answer]" required>
+										@if($question->id == '2')
+										<input type="number" class="form-control" name="{{ $question->id }}[answer]" value="{{old($question->id.'.answer')}}">
 										@else
-								    	<input type="text" class="form-control" name="{{ $question->id }}[answer]" required>
+								    	<input type="text" class="form-control" name="{{ $question->id }}[answer]"   value="{{old($question->id.'.answer')}}">
 								    	@endif
+
 									@else
 									@for($i = 1; $i < 6; $i++)
 									<div class="form-check">
-							        	<input type="radio" class="form-check-input" name="{{ $question->id }}[answer]" required value="{{$i}}">
+										<input type="radio" class="form-check-input" name="{{ $question->id }}[answer]" value="{{$i}}" @if($i == 1) checked @endif @if(old($question->id.'.answer')==$i) checked @endif>
 										<label class="form-check-label" for="{{$i}}">
 								        	{{$i}}
 								        </label>

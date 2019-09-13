@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Survey;
+use App\Question;
 use App\Answer;
 use Webpatser\Uuid\Uuid;
 
@@ -14,7 +15,15 @@ class AnswerController extends Controller
 	//enregistrement des réponses dans la table Answer
     public function store(Request $request) {
 
-	    // remove the token
+    	//pour ne pas le prendre en compte lors de la validation des données
+    	$request->offsetUnset('_token');
+
+	    $this->validate($request, [
+    		'*.answer' => 'required',
+    		'1.answer' => 'required|email'
+        ]);
+
+        // pour ne pas le prendre en compte lors de l'enregistrement des données
 	    $removeToken = $request->except('_token');
 
 	    $randomText = Uuid::generate()->string;
