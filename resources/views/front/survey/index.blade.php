@@ -31,6 +31,7 @@
 
 							    @if($question->question_type == 'A')
 								    <select name="{{ $question->id }}[answer]" class="custom-select">
+								    	<option value="">Choisissez votre réponse</option>
 							        	@foreach($question->choices as $choice)
 							        	<option value="{{ $choice->choice }}" {{ old($question->id.'.answer')==$choice->choice? "selected" : "" }}>{{$choice->choice}}</option>
 							        	@endforeach

@@ -145,6 +145,18 @@ return [
 
     'attributes' => [
         '1.answer'              => 'adresse email',
+        '2.answer'              => '2',
+        '3.answer'              => '3',
+        '5.answer'              => '5',
+        '6.answer'              => '6',
+        '7.answer'              => '7',
+        '8.answer'              => '8',
+        '10.answer'              => '10',
+        '16.answer'              => '16',
+        '17.answer'              => '17',
+        '18.answer'              => '18',
+        '19.answer'              => '19',
+        '20.answer'              => '20',
         'name'                  => 'nom',
         'username'              => "nom d'utilisateur",
         'email'                 => 'adresse email',

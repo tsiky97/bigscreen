@@ -7,6 +7,7 @@ use App\Survey;
 use App\Question;
 use App\Answer;
 use Webpatser\Uuid\Uuid;
+use Carbon\Carbon;
 
 //controleur pour les réponses
 class AnswerController extends Controller
@@ -36,6 +37,7 @@ class AnswerController extends Controller
 		    $newAnswer->question_id = $key;
 		    $newAnswer->userId = $randomText;
 		    $newAnswer->survey_id = Survey::with('questions')->pluck('id')->first();
+		    $newAnswer->created_at = Carbon::now(new \DateTimeZone('Europe/Paris'));
 
 	      	$newAnswer->save();
 
@@ -43,7 +45,7 @@ class AnswerController extends Controller
 	    };
 
 	    //redirection qui affiche un message contenant le lien pour voir ses réponses
-    	return redirect()->route('front.answer.index')->with( [ 'randomText' => $randomText ] );
+    	return redirect()->route('front.answer.index')->with( [ 'randomText' => $randomText ]);
 
 	}
 
@@ -60,8 +62,10 @@ class AnswerController extends Controller
 		
 		$answers = Answer::with('question')->where('userId', $userId)->get();
   		$answersCount = Answer::with('question')->where('userId', $userId)->count();
+  		$answerTime = Answer::with('question')->where('userId', $userId)->pluck('created_at')->first();
+		$displayTime = Carbon::parse($answerTime)->isoFormat('DD.MM.YYYY à H:mm');
 
-  		return view('front.answer.show', ['answers' => $answers]);
+  		return view('front.answer.show', ['answers' => $answers], ['displayTime' => $displayTime]);
 
   	}
 
