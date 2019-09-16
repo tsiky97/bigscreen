@@ -21,7 +21,10 @@ class AnswerController extends Controller
 
 	    $this->validate($request, [
     		'*.answer' => 'required',
-    		'1.answer' => 'required|email'
+    		'1.answer' => 'required|email|max:255',
+    		'2.answer' => 'required|max:255',
+    		'5.answer' => 'required|max:255',
+    		'20.answer' => 'required|max:255'
         ]);
 
         // pour ne pas le prendre en compte lors de l'enregistrement des données
@@ -63,7 +66,7 @@ class AnswerController extends Controller
 		$answers = Answer::with('question')->where('userId', $userId)->get();
   		$answersCount = Answer::with('question')->where('userId', $userId)->count();
   		$answerTime = Answer::with('question')->where('userId', $userId)->pluck('created_at')->first();
-		$displayTime = Carbon::parse($answerTime)->isoFormat('DD.MM.YYYY à H:mm');
+		$displayTime = Carbon::parse($answerTime)->isoFormat('DD.MM.YYYY à HH:mm');
 
   		return view('front.answer.show', ['answers' => $answers], ['displayTime' => $displayTime]);
 

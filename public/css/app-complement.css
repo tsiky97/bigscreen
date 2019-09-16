@@ -1,3 +1,26 @@
+@media screen and (max-width: 800px) {
+  .logo {
+    width: 50% !important;
+  }
+  .col-lg-3.menu {
+    position: initial !important;
+    height: initial !important;
+  }
+  .col-lg-3.menu ul {
+    margin-top: 0 !important;
+    transform: none !important;
+  }
+  .col-lg-3.menu ul li .logo_back {
+    width: 50% !important;
+  }
+  .col-lg-9.contenu {
+    margin-top: 3% !important;
+    margin-left: 0 !important;
+  }
+  .col-lg-9.contenu h1 {
+    text-align: center !important;
+  }
+}
 * {
   font-family: Arial;
 }

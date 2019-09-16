@@ -38,7 +38,7 @@ class BackupController extends Controller
                     ->name('Question6')
                     ->type('pie')
                     ->size(['width' => 200, 'height' => 200])
-                    ->labels(['Occulus Rift/s', 'HTC Vive', 'Windows Mixed Reality', 'PSVR'])
+                    ->labels([$valueQuestion6[0], $valueQuestion6[1], $valueQuestion6[2], $valueQuestion6[3]])
                     ->datasets([
                         [
                             'backgroundColor' => ['#BAC1ED', '#FFD19A', '#FFA785', '#F9C0F3'],
@@ -67,7 +67,7 @@ class BackupController extends Controller
                     ->name('Question7')
                     ->type('pie')
                     ->size(['width' => 200, 'height' => 200])
-                    ->labels(['SteamVR', 'Occulus store', 'Viveport', 'Playstation VR', 'Google Play', 'Windows store'])
+                    ->labels([$valueQuestion7[0], $valueQuestion7[1], $valueQuestion7[2], $valueQuestion7[3], $valueQuestion7[4], $valueQuestion7[5]])
                     ->datasets([
                         [
                             'backgroundColor' => ['#FFCC63', '#6DD9BF', '#50A18E', '#F2D680', '#F2916D', '#F26E50'],
@@ -96,7 +96,7 @@ class BackupController extends Controller
                     ->name('Question8')
                     ->type('pie')
                     ->size(['width' => 200, 'height' => 200])
-                    ->labels(['Occulus Quest', 'Occulus Go', 'HTC Vive Pro', 'Autre', 'Aucun'])
+                    ->labels([$valueQuestion8[0], $valueQuestion8[1], $valueQuestion8[2], $valueQuestion8[3], $valueQuestion8[4]])
                     ->datasets([
                         [
                             'backgroundColor' => ['#8B5A8C', '#ADB0D9', '#F2DC9B', '#F2A35E', '#F25C5C'],

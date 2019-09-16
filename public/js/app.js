@@ -49377,9 +49377,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp2\htdocs\bigscreen2\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\xampp2\htdocs\bigscreen2\resources\assets\css\app-complement.less */"./resources/assets/css/app-complement.less");
-module.exports = __webpack_require__(/*! C:\xampp2\htdocs\bigscreen2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! c:\xampp2\htdocs\bigscreen2\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! c:\xampp2\htdocs\bigscreen2\resources\assets\css\app-complement.less */"./resources/assets/css/app-complement.less");
+module.exports = __webpack_require__(/*! c:\xampp2\htdocs\bigscreen2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -8,7 +8,7 @@
 		  		<h1>Réponses</h1>
 
 		  		@foreach($groupsAnswers as $groupAnswers)
-		  			<table class="table">
+		  			<table class="table table-bordered">
 						<thead>
 						    <tr>
 						    	<th scope="col">N°Question</th>
@@ -25,7 +25,6 @@
 						    </tr>
 						</tbody>
 						@endforeach
-						<hr>
 		  		@endforeach
 
 		  	</div>
