@@ -68,7 +68,7 @@ class AnswerController extends Controller
   		$answerTime = Answer::with('question')->where('userId', $userId)->pluck('created_at')->first();
 		$displayTime = Carbon::parse($answerTime)->isoFormat('DD.MM.YYYY à HH:mm');
 
-  		return view('front.answer.show', ['answers' => $answers], ['displayTime' => $displayTime]);
+  		return view('front.answer.show', compact('answers', 'answersCount', 'displayTime'));
 
   	}
 

@@ -10,7 +10,7 @@
 		      	@foreach($answers as $answer)
 		      	<div class="card">
 					<div class="card-header">
-						Question {{ $answer->question_id }}/20
+						Question {{ $answer->question_id }}/{{$answersCount}}
 				  	</div>
 				  	<div class="card-body">
 				  		<h5 class="card-title">{{$answer->question->title}}</h5>
